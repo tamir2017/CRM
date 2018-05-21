@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.learn.crm.classes.domain.CrmClasses" table="crm_class">
+        <id name="classId">
+            <generator class="uuid"/>
+        </id>
+        <property name="name"/>
+        <property name="beginTime" type="date"/>
+        <property name="endTime" type="date"/>
+
+        <property name="status"/>
+        <property name="totalCount"/>
+        <property name="upgradeCount"/>
+
+        <property name="changeCount"/>
+        <property name="runoffCount"/>
+        <property name="remark"/>
+
+        <property name="uploadTime">
+            <column name="uploadTime" sql-type="datetime"/>
+        </property>
+        <property name="uploadPath"/>
+        <property name="uploadFilename"/>
+
+        <!--//many2one -->
+        <many-to-one name="courseType" class="com.learn.crm.coursetype.domain.CrmCourseType" column="courseTypeId" />
+
+
+    </class>
+</hibernate-mapping>

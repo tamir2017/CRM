@@ -9,8 +9,20 @@
 
     <!--2.common area -->
     <package name="common" namespace="/" extends="struts-default">
-        <!--2.2 interceptor -->
-
+        <!--2.2 interceptor settings-->
+        <interceptors>
+            <interceptor name="loginInterceptor" class="com.learn.crm.web.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="loginInterceptor">
+                    <param name="excludeMethods">login</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="loginStack"/>
+        <global-results>
+            <result name="login">/WEB-INF/pages/login.jsp</result>
+        </global-results>
         <!--2.1 visit jsp -->
         <action name="uiAction_*_*">
             <result>/WEB-INF/pages/{1}/{2}.jsp</result>

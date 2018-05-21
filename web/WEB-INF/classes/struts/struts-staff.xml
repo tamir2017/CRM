@@ -7,6 +7,7 @@
          <action name="staffAction_*" class="com.learn.crm.staff.web.action.StaffAction" method="{1}" >
              <result name="success" type="redirectAction">staffAction_home</result>
              <result name="home">/WEB-INF/pages/frame.jsp</result>
+             <result name="findAll">/WEB-INF/pages/staff/listStaff.jsp</result>
          </action>
     </package>
 </struts>

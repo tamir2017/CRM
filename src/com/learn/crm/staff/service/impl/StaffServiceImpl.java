@@ -5,6 +5,8 @@ import com.learn.crm.staff.domain.CrmStaff;
 import com.learn.crm.staff.service.StaffService;
 import com.learn.crm.utils.MyStringUtils;
 
+import java.util.List;
+
 public class StaffServiceImpl implements StaffService {
 
     private StaffDao staffDao;
@@ -17,5 +19,10 @@ public class StaffServiceImpl implements StaffService {
         // MD5 => loginPwd
         String loginPwd = MyStringUtils.getMD5Value(staff.getLoginPwd());
         return staffDao.find(staff.getLoginName(),loginPwd);
+    }
+
+    @Override
+    public List<CrmStaff> findAllStaff() {
+        return staffDao.findAll();
     }
 }

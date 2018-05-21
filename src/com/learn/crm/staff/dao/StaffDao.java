@@ -2,6 +2,8 @@ package com.learn.crm.staff.dao;
 
 import com.learn.crm.staff.domain.CrmStaff;
 
+import java.util.List;
+
 public interface StaffDao {
     /**
      * find by loginName and loginPassword
@@ -10,4 +12,10 @@ public interface StaffDao {
      * @return
      */
     public CrmStaff find(String loginName, String loginPwd);
+
+    /**
+     *
+     * @return
+     */
+    public List<CrmStaff> findAll();
 }

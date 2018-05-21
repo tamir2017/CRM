@@ -6,6 +6,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import java.util.List;
+
 public class StaffAction extends ActionSupport implements ModelDriven<CrmStaff>{
 
     private CrmStaff staff = new CrmStaff();
@@ -50,6 +52,17 @@ public class StaffAction extends ActionSupport implements ModelDriven<CrmStaff>{
      */
     public String home(){
         return "home";
+    }
+
+    /**
+     * 查询所有
+     * @return
+     */
+    public String findAll(){
+        List<CrmStaff> allStaff = staffService.findAllStaff();
+        ActionContext.getContext().put("allStaff",allStaff);
+
+        return "findAll";
     }
 
 }

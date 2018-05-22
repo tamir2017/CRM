@@ -8,6 +8,7 @@
              <result name="success" type="redirectAction">staffAction_home</result>
              <result name="home">/WEB-INF/pages/frame.jsp</result>
              <result name="findAll">/WEB-INF/pages/staff/listStaff.jsp</result>
+             <result name="editUI">/WEB-INF/pages/staff/editStaff.jsp</result>
          </action>
     </package>
 </struts>

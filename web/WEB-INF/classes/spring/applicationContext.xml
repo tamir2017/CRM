@@ -58,5 +58,6 @@
     -->
     <!-- 4 other settings -->
     <import resource="applicationContext-staff.xml" />
+    <import resource="applicationContext-department.xml" />
 
 </beans>

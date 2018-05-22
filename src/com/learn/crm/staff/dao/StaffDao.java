@@ -18,4 +18,11 @@ public interface StaffDao {
      * @return
      */
     public List<CrmStaff> findAll();
+
+    /**
+     *
+     * @param staffId
+     * @return
+     */
+    public CrmStaff findById(String staffId);
 }

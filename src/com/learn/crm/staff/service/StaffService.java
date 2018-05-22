@@ -9,4 +9,6 @@ public interface StaffService {
     public CrmStaff login(CrmStaff staff);
 
     public List<CrmStaff> findAllStaff();
+
+    public CrmStaff findById(String staffId);
 }

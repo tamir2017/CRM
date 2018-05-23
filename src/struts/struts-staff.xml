@@ -9,6 +9,11 @@
              <result name="home">/WEB-INF/pages/frame.jsp</result>
              <result name="findAll">/WEB-INF/pages/staff/listStaff.jsp</result>
              <result name="editUI">/WEB-INF/pages/staff/editStaff.jsp</result>
+             <!--编辑成功 -->
+             <result name="edit" type="redirectAction">
+                 <param name="namespace">/</param>
+                 <param name="actionName">staffAction_findAll</param>
+             </result>
          </action>
     </package>
 </struts>

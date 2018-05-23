@@ -33,7 +33,9 @@
     <td width="3%" align="right"><img src="${pageContext.request.contextPath}/images/tright.gif"/></td>
   </tr>
 </table>
-<s:form>
+<s:form namespace="/" action="staffAction_edit">
+	<%--隐藏域，存放用户ID --%>
+	<s:hidden name="staffId" value="%{staffId}"/>
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	 <tr>
 	    <td>登录名：</td>

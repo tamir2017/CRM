@@ -31,4 +31,5 @@
 
     <!--3.other settings -->
     <include file="struts/struts-staff.xml"/>
+    <include file="struts/struts-post.xml"/>
 </struts>

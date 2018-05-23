@@ -50,11 +50,13 @@ FONT-SIZE: 12px; COLOR: #4b4b4b; LINE-HEIGHT: 18px; TEXT-DECORATION: none
 					</font> 
 					<br/>
 					用户名：<s:textfield name="loginName" cssClass="msg"/><br/><br/>
-					密&nbsp;&nbsp;码：<s:password name="loginPwd"  cssClass="msg" showPassword="true"/><br/><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					密&nbsp;&nbsp;&nbsp;码：<s:password name="loginPwd"  cssClass="msg" showPassword="true"/><br/><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<s:submit value="登录" cssClass="btn" />
 				</s:form>
+				<!--
 				<a href="${pageContext.request.contextPath}/pages/frame.jsp" >jsp page</a>
+				-->
 			</td>
 		</tr>
 	</table>

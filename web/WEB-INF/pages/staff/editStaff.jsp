@@ -52,12 +52,12 @@
 	 <tr>
 	    <td width="10%">所属部门：</td>
 	    <td width="20%">
-			<s:select list="allDepartment" name="post.department.depId" listKey="depId" listValue="depName"
+			<s:select list="allDepartment" name="post.department.depId" onchange="showPost(this)" listKey="depId" listValue="depName"
 					  headerValue="----请--选--择----" headerKey=""/>
 	    </td>
 	    <td width="8%">职务：</td>
 	    <td width="62%">
-			<s:select list="post != null ? post.department.postSet :{}" name="post.postId"
+			<s:select id="postSelectId" list="post != null ? post.department.postSet :{}" name="post.postId"
 				listKey="postId" listValue="postName" headerValue="----请--选--择----" headerKey=""/>
 	    </td>
 	  </tr>
@@ -73,5 +73,51 @@
 	</table>
 
 </s:form>
+	<script type="text/javascript">
+		function showPost(obj) {
+		    //1. 获得选中部门
+		    var depId = obj.value;
+		    
+			//2. 发送ajax,通过部门查询职务
+			// 2.1 获得引擎 
+			var xmlhttp = null;
+			if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+			}else if(window.ActiveXObject){
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+            // 2.2 设置回调函数
+            xmlhttp.onreadystatechange = function () {
+				//请求完成，正常响应
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+				    //3.获得数据, 并展示, 手动ajax,获得json数据的字符串
+					var textData = xmlhttp.responseText;
+					//3.1将字符串手动转为json对象
+					var jsonData = eval("(" + textData + ")");
+
+					//获得select对象
+					var postSelectElement =  document.getElementById("postSelectId");
+                    postSelectElement.innerHTML="<option value=''>----请--选--择----</option>";
+
+					//3.2遍历
+					for(var i=0; i<jsonData.length; i++){
+					    var postObj = jsonData[i];
+					    //获得职务id
+						var postId = postObj.postId;
+						//获得职务名称
+						var postName = postObj.postName;
+						//3.3 将数据显示在select标签
+						postSelectElement.innerHTML += "<option value='"+postId+"'>"+postName+"</option>";
+					}
+				}
+            }
+			// 2.3 创建连接
+			var url = "${pageContext.request.contextPath}/postAction_findAllWithDepartment?department.depId="+depId;
+			xmlhttp.open("GET",url);
+
+			// 2.4 发送请求
+			xmlhttp.send(null);
+        }
+	</script>
 </body>
 </html>

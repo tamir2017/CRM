@@ -5,7 +5,7 @@
 <struts>
     <package name="cou" namespace="/" extends="common">
          <action name="courseTypeAction_*" class="com.learn.crm.coursetype.web.action.CourseTypeAction" method="{1}" >
-            <result name="findAll">WEB-INF/pages/coursetype/listCourse.jsp</result>
+            <result name="findAll">/WEB-INF/pages/coursetype/listCourse.jsp</result>
          </action>
     </package>
 </struts>

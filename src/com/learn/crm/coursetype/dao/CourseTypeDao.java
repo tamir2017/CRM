@@ -7,4 +7,6 @@ import java.util.List;
 public interface CourseTypeDao {
 
     public List<CrmCourseType> findAll();
+
+    public List<CrmCourseType> findAll(String condition, Object[] params);
 }

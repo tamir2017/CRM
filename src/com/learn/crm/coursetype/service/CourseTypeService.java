@@ -7,4 +7,6 @@ import java.util.List;
 public interface CourseTypeService {
 
     public List<CrmCourseType> findAll();
+
+    public List<CrmCourseType> findAll(CrmCourseType courseType);
 }

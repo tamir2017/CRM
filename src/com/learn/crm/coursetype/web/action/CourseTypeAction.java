@@ -22,10 +22,25 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
 
     /////////////////////////////////////////////////////////////
     public String findAll(){
+        /**
+         * 简单查询
+         */
+        /*
         // 1.查找
         List<CrmCourseType> allCourseType = courseTypeService.findAll();
         // 2. 放入contextMap,  jsp采用“#key"获得
         ActionContext.getContext().put("allCourseType",allCourseType);
+        */
+
+        /**
+         * 条件查询
+         */
+
+        // 1.查找
+        List<CrmCourseType> allCourseType = courseTypeService.findAll(courseType);
+        // 2. 放入contextMap,  jsp采用“#key"获得
+        ActionContext.getContext().put("allCourseType",allCourseType);
+
         return "findAll";
     }
 

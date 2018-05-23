@@ -5,7 +5,12 @@
 <struts>
     <package name="cou" namespace="/" extends="common">
          <action name="courseTypeAction_*" class="com.learn.crm.coursetype.web.action.CourseTypeAction" method="{1}" >
-            <result name="findAll">/WEB-INF/pages/coursetype/listCourse.jsp</result>
+             <!--1 查询所有 -->
+             <result name="findAll">/WEB-INF/pages/coursetype/listCourse.jsp</result>
+             <!--2 添加/编辑 显示JSP页面 -->
+             <result name="addOrEditUI">/WEB-INF/pages/coursetype/addOrEditCourse.jsp</result>
+             <!--3 添加/编辑功能 -->
+             <result name="addOrEdit" type="redirectAction">courseTypeAction_findAll</result>
          </action>
     </package>
 </struts>

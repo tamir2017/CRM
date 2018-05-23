@@ -9,4 +9,8 @@ public interface CourseTypeService {
     public List<CrmCourseType> findAll();
 
     public List<CrmCourseType> findAll(CrmCourseType courseType);
+
+    public CrmCourseType findById(String courseTypeId);
+
+    public void addOrEdit(CrmCourseType courseType);
 }

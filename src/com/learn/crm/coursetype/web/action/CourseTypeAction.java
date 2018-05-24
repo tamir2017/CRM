@@ -2,6 +2,7 @@ package com.learn.crm.coursetype.web.action;
 
 import com.learn.crm.coursetype.domain.CrmCourseType;
 import com.learn.crm.coursetype.service.CourseTypeService;
+import com.learn.crm.page.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,9 +17,21 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
     public CrmCourseType getModel() {
         return courseType;
     }
+
     private CourseTypeService courseTypeService;
     public void setCourseTypeService(CourseTypeService courseTypeService) {
         this.courseTypeService = courseTypeService;
+    }
+
+    //分页数据
+    private int pageNum = 1;
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    private int pageSize = 2;
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     /////////////////////////////////////////////////////////////
@@ -36,11 +49,17 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<CrmCo
         /**
          * 条件查询
          */
-
+        /*
         // 1.查找
         List<CrmCourseType> allCourseType = courseTypeService.findAll(courseType);
         // 2. 放入contextMap,  jsp采用“#key"获得
         ActionContext.getContext().put("allCourseType",allCourseType);
+        */
+        /**
+         *  分页 + 条件查询
+         */
+        PageBean<CrmCourseType> pageBean = this.courseTypeService.findAll(courseType,pageNum,pageSize);
+        ActionContext.getContext().put("pageBean",pageBean);
 
         return "findAll";
     }

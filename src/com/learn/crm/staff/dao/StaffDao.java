@@ -1,10 +1,11 @@
 package com.learn.crm.staff.dao;
 
+import com.learn.crm.base.BaseDao;
 import com.learn.crm.staff.domain.CrmStaff;
 
 import java.util.List;
 
-public interface StaffDao {
+public interface StaffDao extends BaseDao<CrmStaff>{
     /**
      * find by loginName and loginPassword
      * @param loginName
@@ -13,16 +14,5 @@ public interface StaffDao {
      */
     public CrmStaff find(String loginName, String loginPwd);
 
-    /**
-     *
-     * @return
-     */
-    public List<CrmStaff> findAll();
 
-    /**
-     *
-     * @param staffId
-     * @return
-     */
-    public CrmStaff findById(String staffId);
 }

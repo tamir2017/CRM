@@ -20,6 +20,9 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="loginStack"/>
+        <!-- 默认action，如果找不到action，将执行的action
+        <default-action-ref name="staffAction_home"></default-action-ref>
+        -->
         <global-results>
             <result name="login">/WEB-INF/pages/login.jsp</result>
         </global-results>

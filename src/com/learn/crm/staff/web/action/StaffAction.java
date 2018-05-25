@@ -1,5 +1,6 @@
 package com.learn.crm.staff.web.action;
 
+import com.learn.crm.base.BaseAction;
 import com.learn.crm.department.domain.CrmDepartment;
 import com.learn.crm.department.service.DepartmentService;
 import com.learn.crm.staff.domain.CrmStaff;
@@ -10,25 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import java.util.List;
 
-public class StaffAction extends ActionSupport implements ModelDriven<CrmStaff>{
-
-    private CrmStaff staff = new CrmStaff();
-    @Override
-    public CrmStaff getModel() {
-        return staff;
-    }
-
-    private StaffService staffService;
-    public void setStaffService(StaffService staffService) {
-        this.staffService = staffService;
-    }
-
-    private DepartmentService departmentService;
-    public void setDepartmentService(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
-
-    //////////////////////////////////////////////////////
+public class StaffAction extends BaseAction<CrmStaff> {
 
     /**
      * 员工登录
@@ -37,12 +20,12 @@ public class StaffAction extends ActionSupport implements ModelDriven<CrmStaff>{
     public String login(){
 
         //1 查询员工
-        CrmStaff findStaff = staffService.login(staff);
+        CrmStaff findStaff = getStaffService().login(this.getModel());
         //2 是否成功
         if(findStaff != null){
             //成功
             // 3.1 session作用域保存数据
-            ActionContext.getContext().getSession().put("loginStaff", findStaff);
+            putSession("loginStaff", findStaff);
             // 3.2 重定向首页 -- xml配置
             return "success";
         }
@@ -66,26 +49,26 @@ public class StaffAction extends ActionSupport implements ModelDriven<CrmStaff>{
      * @return
      */
     public String findAll(){
-        List<CrmStaff> allStaff = staffService.findAllStaff();
-        ActionContext.getContext().put("allStaff",allStaff);
+        List<CrmStaff> allStaff = getStaffService().findAllStaff();
+        put("allStaff",allStaff);
 
         return "findAll";
     }
 
     public String editUI(){
         //1. find stuff by id
-        CrmStaff findStaff = staffService.findById(staff.getStaffId());
+        CrmStaff findStaff = getStaffService().findById(getModel().getStaffId());
         ActionContext.getContext().getValueStack().push(findStaff);
 
         //2.find all department
-        List<CrmDepartment> allDepartment = departmentService.findAll();
-        ActionContext.getContext().getValueStack().set("allDepartment",allDepartment);
+        List<CrmDepartment> allDepartment = getDepartmentService().findAll();
+        set("allDepartment",allDepartment);
 
         return "editUI";
     }
 
     public String edit(){
-        this.staffService.updateStaff(staff);
+        this.getStaffService().updateStaff(getModel());
         return "edit";
 
     }

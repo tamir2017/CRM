@@ -1,5 +1,6 @@
 package com.learn.crm.post.web.action;
 
+import com.learn.crm.base.BaseAction;
 import com.learn.crm.post.domain.CrmPost;
 import com.learn.crm.post.service.PostService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,20 +12,7 @@ import org.apache.struts2.ServletActionContext;
 import java.io.IOException;
 import java.util.List;
 
-public class PostAction extends ActionSupport implements ModelDriven<CrmPost> {
-
-    CrmPost post = new CrmPost();
-    @Override
-    public CrmPost getModel() {
-        return post;
-    }
-
-    private PostService postService;
-    public void setPostService(PostService postService) {
-        this.postService = postService;
-    }
-
-    ///////////////////////////////////////////////////////
+public class PostAction extends BaseAction<CrmPost> {
 
     /**
      * ajax findAll post by department
@@ -32,7 +20,7 @@ public class PostAction extends ActionSupport implements ModelDriven<CrmPost> {
      */
     public String findAllWithDepartment() throws IOException{
         //1.find
-        List<CrmPost> allPost = postService.findAll(post.getDepartment());
+        List<CrmPost> allPost = this.getPostService().findAll(this.getModel().getDepartment());
 
         //2.javaBean => json
         //2.1 排除不需要数据

@@ -1,5 +1,6 @@
 package com.learn.crm.base;
 
+import com.learn.crm.classes.service.ClassesService;
 import com.learn.crm.coursetype.service.CourseTypeService;
 import com.learn.crm.department.service.DepartmentService;
 import com.learn.crm.post.service.PostService;
@@ -69,9 +70,13 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
         return courseTypeService;
     }
     //班级
-    // 后续添加
-
-
+    private ClassesService classesService;
+    public void setClassesService(ClassesService classesService) {
+        this.classesService = classesService;
+    }
+    public ClassesService getClassesService() {
+        return classesService;
+    }
 
     //3 分页数据  （可选）
     private int pageNum = 1;

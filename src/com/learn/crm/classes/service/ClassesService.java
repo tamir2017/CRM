@@ -11,4 +11,13 @@ public interface ClassesService {
      * @return
      */
     public List<CrmClasses> findAll();
+
+    /**
+     *通过ID查询
+     * @param classesId
+     * @return
+     */
+    public CrmClasses findById(String classesId);
+
+    void updateUpload(CrmClasses model);
 }

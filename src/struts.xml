@@ -13,19 +13,25 @@
         <interceptors>
             <interceptor name="loginInterceptor" class="com.learn.crm.web.interceptor.LoginInterceptor"/>
             <interceptor-stack name="loginStack">
-                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="defaultStack">
+                    <param name="fileUpload.allowedExtensions">.xls,.xlsx</param>
+                </interceptor-ref>
+
                 <interceptor-ref name="loginInterceptor">
                     <param name="excludeMethods">login</param>
                 </interceptor-ref>
             </interceptor-stack>
         </interceptors>
+
         <default-interceptor-ref name="loginStack"/>
         <!-- 默认action，如果找不到action，将执行的action
         <default-action-ref name="staffAction_home"></default-action-ref>
         -->
+
         <global-results>
             <result name="login">/WEB-INF/pages/login.jsp</result>
         </global-results>
+
         <!--2.1 visit jsp -->
         <action name="uiAction_*_*">
             <result>/WEB-INF/pages/{1}/{2}.jsp</result>

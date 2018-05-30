@@ -6,6 +6,9 @@
     <package name="cla" namespace="/" extends="common">
          <action name="classesAction_*" class="com.learn.crm.classes.web.action.ClassesAction" method="{1}" >
              <result name="findAll">/WEB-INF/pages/classesm/listClass.jsp</result>
+             <result name="uploadUI">/WEB-INF/pages/classesm/uploadClass.jsp</result>
+             <result name="upload" type="redirectAction">classesAction_findAll</result>
+             <result name="uploadInput">WEB-INF/pages/error.jsp</result>
          </action>
     </package>
 </struts>

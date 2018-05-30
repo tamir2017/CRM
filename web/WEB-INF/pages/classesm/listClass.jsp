@@ -82,8 +82,12 @@
 		<td align="center">
 	    	<a href="${pageContext.request.contextPath}/pages/classesm/showClass.jsp"><img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/></a>
 		</td>
-		<td align="center" title="上次上传时间：2015-04-02">   
-			<a href="${pageContext.request.contextPath}/pages/classesm/uploadClass.jsp">上传</a>
+		<td align="center" title="上次上传时间：2015-04-02">
+            <%--上传--%>
+            <s:a namespace="/" action="classesAction_uploadUI" >
+                <s:param name="classId" value="classId"/>
+                上传
+            </s:a>
 			<a href="${pageContext.request.contextPath}/pages/classesm/downloadClass">下载</a> <br/>
 		</td>
 	  </tr>

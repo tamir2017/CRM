@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class MyStringUtils {
     /**
@@ -25,6 +26,14 @@ public class MyStringUtils {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 长度为32 uuid 值
+     * @return
+     */
+    public static String getUUID(){
+        return UUID.randomUUID().toString().replace("-","");
     }
 
     public static void main(String[] args) {
